@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.nerd3c.rviz_for_android"
-        minSdkVersion 21
-        targetSdkVersion 26
+        minSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -28,28 +29,50 @@ android {
             path "CMakeLists.txt"
         }
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/license/LICENSE.protobuf.txt'
+        exclude 'META-INF/license/LICENSE.jsr166y.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:design:26.1.0'
-    compile 'org.ros.rosjava_core:rosjava:0.3.5'
-    compile 'org.ros.rosjava_core:rosjava_geometry:0.3.5'
-    compile 'org.ros.rosjava_core:rosjava_helpers:0.3.5'
-    compile 'org.ros.rosjava_bootstrap:gradle_plugins:0.3.0'
-    compile 'org.ros.rosjava_bootstrap:message_generation:0.3.0'
-    compile 'org.ros.rosjava_messages:common_msgs:1.10.2'
-    compile 'org.ros.rosjava_messages:costmap_2d:1.11.4'
-    compile 'org.ros.rosjava_messages:map_msgs:0.0.2'
-    compile 'org.ros.rosjava_messages:std_msgs:0.5.10'
-    compile 'org.ros.rosjava_messages:tf:1.11.8'
-    compile 'org.ros.rosjava_messages:tf2_geometry_msgs:0.4.7'
-    compile 'org.ros.rosjava_messages:tf2_msgs:0.5.15'
-    compile 'org.ros.rosjava_messages:visualization_msgs:1.12.5'
-    compile 'org.ros.android_core:android_10:0.3.3'
-    compile 'org.ros.android_core:android_15:0.3.3'
+    //implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+    implementation 'com.android.support:design:26.0.0'
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    implementation 'org.ros.rosjava_core:rosjava:0.3.5'
+    implementation 'org.ros.rosjava_core:rosjava_geometry:0.3.5'
+    implementation 'org.ros.rosjava_core:rosjava_helpers:0.3.5'
+    implementation 'org.ros.rosjava_bootstrap:gradle_plugins:0.3.0'
+    implementation 'org.ros.rosjava_bootstrap:message_generation:0.3.0'
+    implementation 'org.ros.rosjava_messages:common_msgs:1.10.2'
+    implementation 'org.ros.rosjava_messages:costmap_2d:1.11.4'
+    implementation 'org.ros.rosjava_messages:map_msgs:0.0.2'
+    implementation 'org.ros.rosjava_messages:std_msgs:0.5.11'
+    implementation 'org.ros.rosjava_messages:geometry_msgs:1.12.7'
+    implementation 'org.ros.rosjava_messages:nav_msgs:1.12.7'
+    implementation 'org.ros.rosjava_messages:tf:1.11.8'
+    implementation 'org.ros.rosjava_messages:tf2_geometry_msgs:0.4.7'
+    implementation 'org.ros.rosjava_messages:tf2_msgs:0.5.15'
+    implementation 'org.ros.rosjava_messages:visualization_msgs:1.12.5'
+    implementation 'org.ros.android_core:android_10:0.3.3'
+    implementation 'org.ros.android_core:android_15:0.3.3'
     // https://mvnrepository.com/artifact/com.ximpleware/vtd-xml
-    compile group: 'com.ximpleware', name: 'vtd-xml', version: '2.11'
-    compile 'com.android.support:multidex:1.0.2'
+    implementation group: 'com.ximpleware', name: 'vtd-xml', version: '2.11'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation group: 'com.google.guava', name: 'guava', version: '27.0.1-jre'
+    //implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation group: 'org.apache.commons', name: 'com.springsource.org.apache.commons.io', version: '1.4.0'
+    //implementation group: 'org.jboss.netty', name: 'netty', version: '3.2.0.Final'
+    implementation group: 'io.netty', name: 'netty', version: '3.5.2.Final'
+
 }
